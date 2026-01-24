@@ -1,84 +1,54 @@
-// script.js - Interactive functionality for Netflix clone
+// Netflix India Exact Clone JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all components
+    initEmailForms();
     initFAQ();
-    initForms();
-    initCookieNotice();
     initLanguageSelectors();
+    initSignInButton();
+    initVideos();
+    
+    // Show cookie notice after delay (will implement improvements later)
+    setTimeout(initCookieNotice, 3000);
 });
 
-// ====== FAQ ACCORDION ======
-function initFAQ() {
-    const faqQuestions = document.querySelectorAll('.faq-question');
+// Email Form Handling
+function initEmailForms() {
+    const forms = document.querySelectorAll('.email-form');
     
-    faqQuestions.forEach(question => {
-        question.addEventListener('click', function() {
-            const faqItem = this.parentElement;
-            const answer = faqItem.querySelector('.faq-answer');
-            const icon = this.querySelector('i');
-            
-            // Close other open FAQ items
-            document.querySelectorAll('.faq-answer.active').forEach(activeAnswer => {
-                if (activeAnswer !== answer) {
-                    activeAnswer.classList.remove('active');
-                    const activeIcon = activeAnswer.parentElement.querySelector('.faq-question i');
-                    if (activeIcon) {
-                        activeIcon.className = 'fas fa-plus';
-                    }
-                }
-            });
-            
-            // Toggle current FAQ item
-            answer.classList.toggle('active');
-            
-            // Change icon
-            if (answer.classList.contains('active')) {
-                icon.className = 'fas fa-times';
-            } else {
-                icon.className = 'fas fa-plus';
-            }
+    forms.forEach((form, index) => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            handleFormSubmission(this, index === 0 ? 'top' : 'bottom');
         });
     });
 }
 
-// ====== FORM HANDLING ======
-function initForms() {
-    const heroForm = document.getElementById('heroForm');
-    const bottomForm = document.getElementById('bottomForm');
-    
-    if (heroForm) {
-        heroForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            handleFormSubmission(this, 'hero');
-        });
-    }
-    
-    if (bottomForm) {
-        bottomForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            handleFormSubmission(this, 'bottom');
-        });
-    }
-}
-
-function handleFormSubmission(form, formType) {
+function handleFormSubmission(form, location) {
     const emailInput = form.querySelector('input[type="email"]');
     const email = emailInput.value.trim();
     
+    // Netflix-style validation
     if (validateEmail(email)) {
-        // In a real implementation, this would submit to Netflix's servers
-        console.log(`Form ${formType} submitted with email: ${email}`);
+        // Netflix would redirect to signup page with email parameter
+        // For clone, we'll show a success message
+        showNotification('Welcome! Redirecting to signup...', 'success');
         
-        // Show success message
-        showNotification(`Thank you! A signup link will be sent to ${email}`, 'success');
+        // In real Netflix, this would be:
+        // window.location.href = `https://www.netflix.com/signup/registration?email=${encodeURIComponent(email)}`;
         
-        // Clear form
-        emailInput.value = '';
+        // For demo purposes, clear the form
+        setTimeout(() => {
+            emailInput.value = '';
+        }, 1000);
     } else {
-        // Show error message
+        // Show error state
+        emailInput.classList.add('error');
         showNotification('Please enter a valid email address.', 'error');
-        emailInput.focus();
+        
+        setTimeout(() => {
+            emailInput.classList.remove('error');
+        }, 3000);
     }
 }
 
@@ -87,74 +57,132 @@ function validateEmail(email) {
     return re.test(email);
 }
 
-// ====== COOKIE NOTICE ======
-function initCookieNotice() {
-    const cookieNotice = document.getElementById('cookieNotice');
-    const acceptBtn = document.getElementById('cookieAccept');
-    const customizeBtn = document.getElementById('cookieCustomize');
+// FAQ Accordion
+function initFAQ() {
+    const faqQuestions = document.querySelectorAll('.faq-question');
     
-    // Check if user has already made a choice
-    const cookiePreference = localStorage.getItem('netflixCookiePreference');
-    
-    if (!cookiePreference) {
-        // Show notice after a short delay (Netflix style)
-        setTimeout(() => {
-            cookieNotice.classList.add('show');
-        }, 1000);
-    }
-    
-    // Accept button
-    if (acceptBtn) {
-        acceptBtn.addEventListener('click', function() {
-            localStorage.setItem('netflixCookiePreference', 'accepted');
-            cookieNotice.classList.remove('show');
-            showNotification('Cookie preferences saved.', 'info');
-        });
-    }
-    
-    // Customize button
-    if (customizeBtn) {
-        customizeBtn.addEventListener('click', function() {
-            // In a real implementation, this would open a customization modal
-            const customChoice = confirm('Customize cookie preferences:\n\n1. Essential cookies (required)\n2. Performance cookies\n3. Advertising cookies\n\nSelect which categories to accept.');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', function() {
+            const faqItem = this.parentElement;
+            const answer = faqItem.querySelector('.faq-answer');
+            const icon = this.querySelector('i');
+            const isActive = answer.classList.contains('active');
             
-            if (customChoice) {
-                localStorage.setItem('netflixCookiePreference', 'customized');
-                showNotification('Custom cookie preferences saved.', 'info');
-            }
+            // Close all other FAQ items (Netflix behavior)
+            document.querySelectorAll('.faq-answer.active').forEach(activeAnswer => {
+                if (activeAnswer !== answer) {
+                    activeAnswer.classList.remove('active');
+                    const activeIcon = activeAnswer.parentElement.querySelector('.faq-question i');
+                    if (activeIcon) {
+                        activeIcon.style.transform = 'rotate(0deg)';
+                    }
+                }
+            });
             
-            cookieNotice.classList.remove('show');
-        });
-    }
-}
-
-// ====== LANGUAGE SELECTOR ======
-function initLanguageSelectors() {
-    const languageSelectors = document.querySelectorAll('.language-selector select');
-    
-    languageSelectors.forEach(select => {
-        select.addEventListener('change', function() {
-            const selectedLanguage = this.value;
-            
-            // In a real Netflix implementation, this would:
-            // 1. Send a request to change language preference
-            // 2. Reload page content in selected language
-            
-            console.log(`Language changed to: ${selectedLanguage}`);
-            
-            // Show language change confirmation
-            if (selectedLanguage === 'hi') {
-                showNotification('भाषा हिन्दी में बदल गई है (Language changed to Hindi)', 'info');
+            // Toggle current item
+            if (!isActive) {
+                answer.classList.add('active');
+                icon.style.transform = 'rotate(45deg)';
+                this.setAttribute('aria-expanded', 'true');
             } else {
-                showNotification('Language changed to English', 'info');
+                answer.classList.remove('active');
+                icon.style.transform = 'rotate(0deg)';
+                this.setAttribute('aria-expanded', 'false');
             }
         });
     });
 }
 
-// ====== NOTIFICATION SYSTEM ======
+// Language Selectors
+function initLanguageSelectors() {
+    const languageSelectors = document.querySelectorAll('.language-dropdown');
+    
+    languageSelectors.forEach(selector => {
+        selector.addEventListener('change', function() {
+            const selectedLanguage = this.value;
+            
+            // In real Netflix, this would change the language
+            // For clone, we'll just show a message
+            if (selectedLanguage === 'hi') {
+                showNotification('भाषा हिन्दी में बदल गई है (Language changed to Hindi)', 'info');
+            } else {
+                showNotification('Language changed to English', 'info');
+            }
+            
+            // Update both selectors to stay in sync
+            languageSelectors.forEach(s => {
+                if (s !== this) {
+                    s.value = selectedLanguage;
+                }
+            });
+            
+            // Store preference
+            localStorage.setItem('netflixLanguage', selectedLanguage);
+        });
+    });
+    
+    // Load saved language preference
+    const savedLanguage = localStorage.getItem('netflixLanguage');
+    if (savedLanguage) {
+        languageSelectors.forEach(selector => {
+            selector.value = savedLanguage;
+        });
+    }
+}
+
+// Sign In Button
+function initSignInButton() {
+    const signInButton = document.querySelector('.signin-button');
+    
+    if (signInButton) {
+        signInButton.addEventListener('click', function(e) {
+            // Netflix redirects to login page
+            // For clone, we'll show a message
+            e.preventDefault();
+            showNotification('Redirecting to Netflix sign in...', 'info');
+            
+            // In real implementation:
+            // window.location.href = 'https://www.netflix.com/in/login';
+        });
+    }
+}
+
+// Video Autoplay (Netflix style)
+function initVideos() {
+    const videos = document.querySelectorAll('video');
+    
+    videos.forEach(video => {
+        // Ensure videos are muted and loop (Netflix autoplay policy)
+        video.muted = true;
+        video.loop = true;
+        video.playsInline = true;
+        
+        // Attempt to play (Netflix autoplays videos)
+        video.play().catch(error => {
+            console.log('Autoplay prevented:', error);
+            // Netflix would show a play button overlay here
+        });
+    });
+}
+
+// Cookie Notice (Placeholder for improvements)
+function initCookieNotice() {
+    // This is where we'll implement the improved cookie notice
+    // For now, it remains hidden as per the original Netflix page
+    const cookieNotice = document.getElementById('cookieNotice');
+    
+    // Check if user has already made a choice
+    const cookiePreference = localStorage.getItem('netflixCookiePreference');
+    
+    if (!cookiePreference) {
+        // In improvements, we'll show a better cookie notice here
+        // cookieNotice.style.display = 'block';
+    }
+}
+
+// Notification System (Netflix-style toasts)
 function showNotification(message, type = 'info') {
-    // Remove existing notification if present
+    // Remove existing notification
     const existingNotification = document.querySelector('.netflix-notification');
     if (existingNotification) {
         existingNotification.remove();
@@ -164,6 +192,7 @@ function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
     notification.className = `netflix-notification ${type}`;
     notification.textContent = message;
+    notification.setAttribute('role', 'alert');
     
     // Style the notification
     notification.style.cssText = `
@@ -174,23 +203,34 @@ function showNotification(message, type = 'info') {
         color: white;
         padding: 15px 25px;
         border-radius: 4px;
-        z-index: 1001;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        animation: slideIn 0.3s ease;
-        max-width: 300px;
-        font-size: 0.9rem;
+        z-index: 10000;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        animation: netflixSlideIn 0.3s ease;
+        max-width: 350px;
+        font-size: 14px;
+        font-weight: 500;
     `;
     
-    // Add animation keyframes
+    // Add animation styles
     const style = document.createElement('style');
     style.textContent = `
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+        @keyframes netflixSlideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
         }
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
+        @keyframes netflixFadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
         }
     `;
     document.head.appendChild(style);
@@ -198,9 +238,9 @@ function showNotification(message, type = 'info') {
     // Add to page
     document.body.appendChild(notification);
     
-    // Remove after 3 seconds
+    // Remove after 3 seconds (Netflix notification duration)
     setTimeout(() => {
-        notification.style.animation = 'fadeOut 0.5s ease';
+        notification.style.animation = 'netflixFadeOut 0.5s ease';
         setTimeout(() => {
             if (notification.parentNode) {
                 notification.remove();
@@ -209,41 +249,49 @@ function showNotification(message, type = 'info') {
     }, 3000);
 }
 
-// ====== SIGN IN BUTTON ======
-document.querySelector('.netflix-btn-signin')?.addEventListener('click', function(e) {
-    e.preventDefault();
-    showNotification('Redirecting to sign in page...', 'info');
-    
-    // Simulate redirect (in real implementation, this would be a page change)
-    setTimeout(() => {
-        alert('In a production environment, this would redirect to:\nhttps://www.netflix.com/in/login');
-    }, 1000);
-});
-// Add geo-detection and redirection logic
-function detectUserRegion() {
-    // Get user's IP location (simplified example)
-    const userInIndia = true; // Would be determined by IP lookup
-    
-    if (userInIndia && window.location.pathname !== '/in/') {
-        // Redirect to correct regional page
-        window.location.href = '/in/';
+// Error state for email input
+const style = document.createElement('style');
+style.textContent = `
+    .email-input.error {
+        border-color: #e50914 !important;
+        animation: shake 0.5s ease;
     }
     
-    // Ensure all pricing shows ₹ (Indian Rupees)
-    updatePricingToINR();
-}
-// <!-- Simplified cookie notice -->
-<div class="cookie-notice-improved">
-    <p>We use cookies to improve your Netflix experience. 
-       <a href="#">Learn more</a>
-    </p>
-    <button class="accept-btn">Got it</button>
-</div>
-// Dynamic content loading for Trending section
-async function loadTrendingContent() {
-    // Fetch real trending data (using a movie API)
-    const trendingData = await fetchTrendingMovies();
-    
-    // Populate the section with actual content
-    renderTrendingGrid(trendingData);
-}
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        75% { transform: translateX(5px); }
+    }
+`;
+document.head.appendChild(style);
+
+// Handle browser resize (Netflix responsive behavior)
+let resizeTimer;
+window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+        // Netflix may adjust layout on resize
+        // For clone, we ensure videos maintain aspect ratio
+        const videos = document.querySelectorAll('video');
+        videos.forEach(video => {
+            video.style.width = '100%';
+            video.style.height = '100%';
+        });
+    }, 250);
+});
+
+// Add loading state for videos (Netflix preloads content)
+window.addEventListener('load', function() {
+    // Simulate Netflix's content loading
+    const loadingElements = document.querySelectorAll('.loading-placeholder');
+    loadingElements.forEach(element => {
+        element.style.display = 'none';
+    });
+});
+
+// Export functions for improvement phase
+window.netflixClone = {
+    validateEmail,
+    showNotification,
+    initCookieNotice
+};
