@@ -3,602 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flixnet | Next-Gen Streaming</title>
-    
-    <!-- Fonts & Icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- CSS -->
+    <title>FlexNet - All Your Entertainment in One Place</title>
     <link rel="stylesheet" href="style.css">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/48/000000/flex-biceps.png">
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="nav-container">
-            <!-- Logo -->
-            <div class="nav-left">
-                <a href="#" class="logo">
-                    <i class="fas fa-play-circle"></i>
-                    <span>StreamFlow</span>
-                </a>
-                
-                <!-- Navigation Links -->
-                <ul class="nav-links">
-                    <li><a href="#" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="#" class="nav-link"><i class="fas fa-compass"></i> Browse</a></li>
-                    <li><a href="#" class="nav-link"><i class="fas fa-fire"></i> Trending</a></li>
-                    <li><a href="#" class="nav-link"><i class="fas fa-layer-group"></i> Categories</a></li>
-                    <li><a href="#" class="nav-link"><i class="fas fa-bookmark"></i> My List</a></li>
-                </ul>
+            <div class="logo">
+                <i class="fas fa-play-circle"></i>
+                <h1>FlexNet</h1>
             </div>
-            
-            <!-- Right Navigation -->
-            <div class="nav-right">
-                <!-- Search -->
-                <div class="search-container">
-                    <button class="search-btn">
-                        <i class="fas fa-search"></i>
-                    </button>
-                    <div class="search-box">
-                        <input type="text" class="search-input" placeholder="Search movies, shows...">
-                        <div class="search-results"></div>
-                    </div>
-                </div>
-                
-                <!-- Notifications -->
-                <div class="notification-container">
-                    <button class="notification-btn">
-                        <i class="fas fa-bell"></i>
-                        <span class="notification-badge">3</span>
-                    </button>
-                    <div class="notification-dropdown">
-                        <h4>Notifications</h4>
-                        <div class="notification-list">
-                            <!-- Filled by JS -->
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Profile -->
-                <div class="profile-container">
-                    <button class="profile-btn">
-                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex" alt="Profile" class="profile-img">
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="profile-dropdown">
-                        <div class="profile-info">
-                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex" alt="Profile">
-                            <div>
-                                <h4>Alex Johnson</h4>
-                                <p>Premium Member</p>
-                            </div>
-                        </div>
-                        <a href="#"><i class="fas fa-user"></i> Profile</a>
-                        <a href="#"><i class="fas fa-cog"></i> Settings</a>
-                        <a href="#"><i class="fas fa-users"></i> Family</a>
-                        <a href="#"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
-                    </div>
-                </div>
-                
-                <!-- Watch Party -->
-                <button class="watch-party-btn">
-                    <i class="fas fa-users"></i>
-                    <span>Watch Party</span>
-                </button>
-                
-                <!-- Mobile Menu Button -->
-                <button class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
+            <div class="nav-menu">
+                <a href="#" class="nav-link active"><i class="fas fa-home"></i> Home</a>
+                <a href="#" class="nav-link"><i class="fas fa-film"></i> Movies</a>
+                <a href="#" class="nav-link"><i class="fas fa-tv"></i> Web Series</a>
+                <a href="#" class="nav-link"><i class="fas fa-satellite-dish"></i> Live TV</a>
+                <a href="#" class="nav-link"><i class="fas fa-globe-asia"></i> K-Drama</a>
+                <a href="#" class="nav-link"><i class="fas fa-cricket"></i> Sports</a>
+            </div>
+            <div class="nav-actions">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+                <button class="notify-btn"><i class="fas fa-bell"></i></button>
+                <button class="user-btn">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
                 </button>
             </div>
-        </div>
-        
-        <!-- Mobile Navigation -->
-        <div class="mobile-nav">
-            <ul class="mobile-nav-links">
-                <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#"><i class="fas fa-compass"></i> Browse</a></li>
-                <li><a href="#"><i class="fas fa-fire"></i> Trending</a></li>
-                <li><a href="#"><i class="fas fa-layer-group"></i> Categories</a></li>
-                <li><a href="#"><i class="fas fa-bookmark"></i> My List</a></li>
-            </ul>
+            <button class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-background"></div>
-        <div class="hero-overlay"></div>
-        
-        <div class="hero-content">
-            <div class="hero-badge">
-                <i class="fas fa-crown"></i>
-                <span>TRENDING #1</span>
-            </div>
-            
-            <h1 class="hero-title">CYBERPUNK EDGERUNNERS</h1>
-            
-            <div class="hero-meta">
-                <span class="rating">
-                    <i class="fas fa-star"></i>
-                    8.7/10
-                </span>
-                <span class="year">2023</span>
-                <span class="duration">1h 54m</span>
-                <span class="quality">4K HDR</span>
-                <span class="age-rating">18+</span>
-            </div>
-            
-            <p class="hero-description">
-                In a dystopian future, a street kid tries to survive in a technology-obsessed city by becoming an edgerunner: a mercenary outlaw in a world of cybernetic enhancements.
-            </p>
-            
-            <div class="hero-actions">
-                <button class="btn btn-primary btn-play">
-                    <i class="fas fa-play"></i>
-                    <span>Play Now</span>
-                </button>
-                <button class="btn btn-secondary btn-info">
-                    <i class="fas fa-info-circle"></i>
-                    <span>More Info</span>
-                </button>
-                <button class="btn btn-secondary btn-trailer">
-                    <i class="fas fa-film"></i>
-                    <span>Trailer</span>
-                </button>
-                <button class="btn btn-secondary btn-add">
-                    <i class="fas fa-plus"></i>
-                    <span>Add to List</span>
-                </button>
-            </div>
-            
-            <div class="hero-cast">
-                <span class="cast-label">Starring:</span>
-                <div class="cast-tags">
-                    <span class="cast-tag">Giancarlo Esposito</span>
-                    <span class="cast-tag">Lucy Liu</span>
-                    <span class="cast-tag">Keanu Reeves</span>
-                </div>
-            </div>
-            
-            <div class="hero-progress">
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 35%"></div>
-                </div>
-                <div class="progress-info">
-                    <span class="time-current">38:24</span>
-                    <span class="time-total">1:54:00</span>
+    <!-- Search Overlay -->
+    <div class="search-overlay">
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search for movies, shows, sports...">
+            <button class="close-search"><i class="fas fa-times"></i></button>
+            <div class="search-suggestions">
+                <h3>Popular Searches</h3>
+                <div class="suggestion-tags">
+                    <span class="tag">IPL 2024</span>
+                    <span class="tag">Stranger Things</span>
+                    <span class="tag">Squid Game</span>
+                    <span class="tag">Avengers</span>
+                    <span class="tag">Money Heist</span>
                 </div>
             </div>
         </div>
-        
-        <div class="hero-controls">
-            <button class="control-btn volume-btn">
-                <i class="fas fa-volume-up"></i>
-            </button>
-            <button class="control-btn subtitle-btn">
-                <i class="fas fa-closed-captioning"></i>
-            </button>
-            <button class="control-btn quality-btn">
-                <i class="fas fa-hd"></i>
-            </button>
-        </div>
-    </section>
+    </div>
 
     <!-- Main Content -->
     <main class="main-content">
-        <div class="container">
-            <!-- Continue Watching -->
-            <section class="content-section">
-                <div class="section-header">
-                    <h2>
-                        <i class="fas fa-history"></i>
-                        Continue Watching
-                    </h2>
-                    <a href="#" class="view-all">
-                        View All
-                        <i class="fas fa-chevron-right"></i>
-                    </a>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-slide active">
+                <div class="hero-content">
+                    <h2 class="hero-title">NOW STREAMING</h2>
+                    <h1 class="hero-main-title">The Last Stand</h1>
+                    <p class="hero-description">In a post-apocalyptic world, a group of survivors must defend their last stronghold against relentless enemies. Action, Thriller, Sci-Fi.</p>
+                    <div class="hero-actions">
+                        <button class="btn-play"><i class="fas fa-play"></i> Play Now</button>
+                        <button class="btn-info"><i class="fas fa-info-circle"></i> More Info</button>
+                    </div>
+                    <div class="hero-meta">
+                        <span><i class="fas fa-star"></i> 8.5/10</span>
+                        <span><i class="fas fa-clock"></i> 2h 18m</span>
+                        <span><i class="fas fa-calendar-alt"></i> 2024</span>
+                        <span class="age-rating">PG-13</span>
+                    </div>
                 </div>
-                
-                <div class="content-carousel" id="continue-watching">
-                    <!-- Filled by JS -->
+                <div class="hero-gradient"></div>
+            </div>
+            
+            <div class="hero-controls">
+                <button class="hero-prev"><i class="fas fa-chevron-left"></i></button>
+                <div class="hero-indicators">
+                    <span class="indicator active"></span>
+                    <span class="indicator"></span>
+                    <span class="indicator"></span>
+                    <span class="indicator"></span>
                 </div>
-            </section>
+                <button class="hero-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
 
-            <!-- Trending Now -->
-            <section class="content-section">
-                <div class="section-header">
-                    <h2>
-                        <i class="fas fa-fire"></i>
-                        Trending Now
-                    </h2>
-                    <div class="trending-filters">
-                        <button class="filter-btn active" data-filter="today">Today</button>
-                        <button class="filter-btn" data-filter="week">This Week</button>
-                        <button class="filter-btn" data-filter="month">This Month</button>
-                    </div>
-                </div>
-                
-                <div class="content-grid" id="trending-content">
-                    <!-- Filled by JS -->
-                </div>
-            </section>
+        <!-- Content Categories -->
+        <section class="content-section">
+            <h2 class="section-title">Continue Watching</h2>
+            <div class="content-grid">
+                <!-- Items will be generated by JavaScript -->
+            </div>
+        </section>
 
-            <!-- Recommended For You -->
-            <section class="content-section">
-                <div class="section-header">
-                    <h2>
-                        <i class="fas fa-magic"></i>
-                        Recommended For You
-                    </h2>
-                    <div class="mood-selector">
-                        <span>Mood:</span>
-                        <select class="mood-select">
-                            <option value="all">All Moods</option>
-                            <option value="action">Action</option>
-                            <option value="comedy">Comedy</option>
-                            <option value="drama">Drama</option>
-                            <option value="relaxing">Relaxing</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="recommendation-grid" id="recommendations">
-                    <!-- Filled by JS -->
-                </div>
-            </section>
+        <section class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">Popular Movies</h2>
+                <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="content-grid" id="movies-grid">
+                <!-- Movie items will be generated by JavaScript -->
+            </div>
+        </section>
 
-            <!-- Live Watch Parties -->
-            <section class="content-section watch-party-section">
-                <div class="section-header">
-                    <h2>
-                        <i class="fas fa-users"></i>
-                        Live Watch Parties
-                    </h2>
-                    <button class="btn btn-primary create-party-btn">
-                        <i class="fas fa-plus"></i>
-                        Create Party
-                    </button>
-                </div>
-                
-                <div class="party-grid" id="watch-parties">
-                    <!-- Filled by JS -->
-                </div>
-            </section>
+        <section class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">Trending Web Series</h2>
+                <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="content-grid" id="series-grid">
+                <!-- Series items will be generated by JavaScript -->
+            </div>
+        </section>
 
-            <!-- Categories -->
-            <section class="content-section">
-                <div class="section-header">
-                    <h2>
-                        <i class="fas fa-th-large"></i>
-                        Browse Categories
-                    </h2>
+        <section class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">Live Sports & Events</h2>
+                <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="live-events">
+                <div class="live-card">
+                    <div class="live-badge">LIVE</div>
+                    <h3>IPL 2024</h3>
+                    <p>Mumbai Indians vs Chennai Super Kings</p>
+                    <div class="live-info">
+                        <span><i class="fas fa-play-circle"></i> Star Sports</span>
+                        <span><i class="fas fa-clock"></i> 38th Over</span>
+                    </div>
+                    <button class="btn-watch-live"><i class="fas fa-play"></i> Watch Live</button>
                 </div>
-                
-                <div class="category-grid">
-                    <div class="category-card" data-category="action">
-                        <div class="category-icon">
-                            <i class="fas fa-explosion"></i>
-                        </div>
-                        <h3>Action</h3>
-                        <p>245 titles</p>
+                <div class="live-card">
+                    <div class="live-badge">UPCOMING</div>
+                    <h3>Champions League</h3>
+                    <p>Real Madrid vs Manchester City</p>
+                    <div class="live-info">
+                        <span><i class="fas fa-play-circle"></i> Sony Ten</span>
+                        <span><i class="fas fa-clock"></i> 10:30 PM</span>
                     </div>
-                    
-                    <div class="category-card" data-category="comedy">
-                        <div class="category-icon">
-                            <i class="fas fa-laugh"></i>
-                        </div>
-                        <h3>Comedy</h3>
-                        <p>189 titles</p>
-                    </div>
-                    
-                    <div class="category-card" data-category="drama">
-                        <div class="category-icon">
-                            <i class="fas fa-theater-masks"></i>
-                        </div>
-                        <h3>Drama</h3>
-                        <p>312 titles</p>
-                    </div>
-                    
-                    <div class="category-card" data-category="scifi">
-                        <div class="category-icon">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <h3>Sci-Fi</h3>
-                        <p>167 titles</p>
-                    </div>
-                    
-                    <div class="category-card" data-category="horror">
-                        <div class="category-icon">
-                            <i class="fas fa-ghost"></i>
-                        </div>
-                        <h3>Horror</h3>
-                        <p>98 titles</p>
-                    </div>
-                    
-                    <div class="category-card" data-category="documentary">
-                        <div class="category-icon">
-                            <i class="fas fa-globe"></i>
-                        </div>
-                        <h3>Documentary</h3>
-                        <p>76 titles</p>
-                    </div>
+                    <button class="btn-watch-live"><i class="fas fa-bell"></i> Set Reminder</button>
                 </div>
-            </section>
+                <div class="live-card">
+                    <div class="live-badge">LIVE</div>
+                    <h3>NBA Playoffs</h3>
+                    <p>Lakers vs Celtics Game 5</p>
+                    <div class="live-info">
+                        <span><i class="fas fa-play-circle"></i> ESPN</span>
+                        <span><i class="fas fa-clock"></i> 4th Quarter</span>
+                    </div>
+                    <button class="btn-watch-live"><i class="fas fa-play"></i> Watch Live</button>
+                </div>
+            </div>
+        </section>
 
-            <!-- New Releases -->
-            <section class="content-section">
-                <div class="section-header">
-                    <h2>
-                        <i class="fas fa-calendar-star"></i>
-                        New Releases
-                    </h2>
-                    <div class="release-filters">
-                        <button class="filter-btn active" data-filter="week">This Week</button>
-                        <button class="filter-btn" data-filter="last-week">Last Week</button>
-                        <button class="filter-btn" data-filter="upcoming">Coming Soon</button>
-                    </div>
-                </div>
-                
-                <div class="new-releases-grid" id="new-releases">
-                    <!-- Filled by JS -->
-                </div>
-            </section>
-
-            <!-- Features Section -->
-            <section class="features-section">
-                <h2 class="features-title">Why StreamFlow is Better</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <h3>AI Recommendations</h3>
-                        <p>Personalized suggestions based on your watching habits and preferences</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h3>Watch Together</h3>
-                        <p>Sync playback with friends anywhere in real-time with chat</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-gamepad"></i>
-                        </div>
-                        <h3>Interactive Content</h3>
-                        <p>Choose your own adventure stories and interactive movies</p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-download"></i>
-                        </div>
-                        <h3>Smart Downloads</h3>
-                        <p>Auto-download shows you might like when connected to WiFi</p>
-                    </div>
-                </div>
-            </section>
-        </div>
+        <section class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">K-Drama Spotlight</h2>
+                <a href="#" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="content-grid" id="kdrama-grid">
+                <!-- K-Drama items will be generated by JavaScript -->
+            </div>
+        </section>
     </main>
-
-    <!-- Video Player Modal -->
-    <div class="video-modal">
-        <div class="modal-overlay"></div>
-        <div class="modal-container">
-            <div class="modal-header">
-                <h3>Cyberpunk Edgerunners</h3>
-                <button class="modal-close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            
-            <div class="video-player">
-                <div class="video-placeholder">
-                    <i class="fas fa-play-circle"></i>
-                    <p>StreamFlow Premium Player</p>
-                </div>
-                
-                <div class="video-controls">
-                    <button class="video-control play-pause">
-                        <i class="fas fa-play"></i>
-                    </button>
-                    <div class="time-display">
-                        <span class="current-time">0:00</span>
-                        <span class="duration">1:54:00</span>
-                    </div>
-                    <div class="progress-container">
-                        <div class="progress-bar"></div>
-                    </div>
-                    <button class="video-control volume">
-                        <i class="fas fa-volume-up"></i>
-                    </button>
-                    <button class="video-control fullscreen">
-                        <i class="fas fa-expand"></i>
-                    </button>
-                    <button class="video-control settings">
-                        <i class="fas fa-cog"></i>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="video-info">
-                <div class="video-quality">
-                    <span class="quality-badge">4K</span>
-                    <span class="quality-badge">HDR</span>
-                    <span class="quality-badge">Dolby Atmos</span>
-                </div>
-                
-                <div class="party-invite">
-                    <button class="btn btn-primary invite-btn">
-                        <i class="fas fa-user-plus"></i>
-                        Invite Friends
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Watch Party Modal -->
-    <div class="party-modal">
-        <div class="modal-overlay"></div>
-        <div class="modal-container">
-            <div class="modal-header">
-                <h3>Create Watch Party</h3>
-                <button class="modal-close">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            
-            <div class="party-form">
-                <div class="form-group">
-                    <label for="party-name">Party Name</label>
-                    <input type="text" id="party-name" placeholder="Enter party name" class="form-input">
-                </div>
-                
-                <div class="form-group">
-                    <label for="party-content">Select Content</label>
-                    <select id="party-content" class="form-select">
-                        <option value="">Choose a movie or show</option>
-                        <option value="1">Cyberpunk Edgerunners</option>
-                        <option value="2">Stranger Worlds</option>
-                        <option value="3">The Last Frontier</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label>Privacy</label>
-                    <div class="privacy-options">
-                        <label class="privacy-option">
-                            <input type="radio" name="privacy" value="public" checked>
-                            <span class="radio-custom"></span>
-                            <span>Public - Anyone can join</span>
-                        </label>
-                        <label class="privacy-option">
-                            <input type="radio" name="privacy" value="private">
-                            <span class="radio-custom"></span>
-                            <span>Private - Invite only</span>
-                        </label>
-                    </div>
-                </div>
-                
-                <button class="btn btn-primary create-party-submit">
-                    Create Party
-                </button>
-            </div>
-            
-            <div class="party-guests">
-                <h4>Invite Friends</h4>
-                <div class="guest-list">
-                    <!-- Filled by JS -->
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Quick Actions Bar -->
-    <div class="quick-actions">
-        <button class="quick-action" title="Add to List">
-            <i class="fas fa-plus"></i>
-        </button>
-        <button class="quick-action" title="Download">
-            <i class="fas fa-download"></i>
-        </button>
-        <button class="quick-action" title="Quality">
-            <i class="fas fa-hd"></i>
-        </button>
-        <button class="quick-action" title="Subtitles">
-            <i class="fas fa-closed-captioning"></i>
-        </button>
-    </div>
-
-    <!-- Toast Container -->
-    <div class="toast-container"></div>
-
-    <!-- Loading Overlay -->
-    <div class="loading-overlay">
-        <div class="loader">
-            <div class="loader-spinner"></div>
-            <p>Loading your personalized experience...</p>
-        </div>
-    </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="#" class="footer-logo">
-                        <i class="fas fa-play-circle"></i>
-                        <span>StreamFlow</span>
-                    </a>
-                    <p class="footer-tagline">The future of streaming entertainment</p>
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="logo">
+                    <i class="fas fa-play-circle"></i>
+                    <h2>FlexNet</h2>
                 </div>
-                
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>StreamFlow</h4>
-                        <a href="#">About Us</a>
-                        <a href="#">Careers</a>
-                        <a href="#">Contact</a>
-                        <a href="#">Media Center</a>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h4>Support</h4>
-                        <a href="#">Help Center</a>
-                        <a href="#">Account</a>
-                        <a href="#">Terms of Use</a>
-                        <a href="#">Privacy</a>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h4>Features</h4>
-                        <a href="#">4K & HDR</a>
-                        <a href="#">Watch Party</a>
-                        <a href="#">Downloads</a>
-                        <a href="#">Interactive</a>
-                    </div>
-                    
-                    <div class="footer-column">
-                        <h4>Connect</h4>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-facebook"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-youtube"></i></a>
-                        </div>
-                    </div>
+                <p class="footer-description">Your ultimate destination for movies, web series, live sports, and K-dramas. All your entertainment needs in one place.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <div class="language-selector">
-                    <i class="fas fa-globe"></i>
-                    <select class="language-select">
-                        <option value="en">English</option>
-                        <option value="Hi">Hindi</option>
-                        <option value="Be">Bengali</option>
-                        <option value="Ta">Tamil</option>
-                    </select>
-                </div>
-                
-                <p class="copyright">© 2026 Flixnet. All rights reserved.</p>
+            <div class="footer-section">
+                <h3>Categories</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Movies</a></li>
+                    <li><a href="#">Web Series</a></li>
+                    <li><a href="#">Live TV</a></li>
+                    <li><a href="#">Sports</a></li>
+                    <li><a href="#">K-Drama</a></li>
+                </ul>
             </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Account</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Download Our App</h3>
+                <p>Available on iOS and Android</p>
+                <div class="app-buttons">
+                    <button class="app-btn"><i class="fab fa-apple"></i> App Store</button>
+                    <button class="app-btn"><i class="fab fa-google-play"></i> Google Play</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 FlexNet. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
